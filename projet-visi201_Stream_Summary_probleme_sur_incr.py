@@ -123,16 +123,21 @@ class StreamSummary:
     def show(self):
         print(self.elements)
         print()
-        print(self.lst_compteurs.value,self.lst_compteurs.E.value)
+        print(self.lst_compteurs.value,self.lst_compteurs.E.value, self.lst_compteurs.E.next.value, self.lst_compteurs.E.next.next.value, self.lst_compteurs.E.next.next.next.value)
         print()
-        print(self.lst_compteurs.next.value, self.lst_compteurs.next.E.value)
+        print(self.lst_compteurs.next.value, self.lst_compteurs.next.E.value, self.lst_compteurs.next.E.next.value, self.lst_compteurs.next.E.next.next.value, self.lst_compteurs.next.E.next.next.next.value)
+        print()
+        print(self.lst_compteurs.next.next.value, self.lst_compteurs.next.next.E.value, self.lst_compteurs.next.next.E.next.value, self.lst_compteurs.next.next.E.next.next.value, self.lst_compteurs.next.next.E.next.next.next.value)
         
          
          #... pour afficher le contenu du "stream summary", pratique pour déboguer ...
          #... une quinzaine de lignes de Python ...
 
     def list(self):
-         pass
+         liste = []
+         for i, j in self.elements.items():
+             liste.append([i,j.C.value])
+         return liste
          # A LA FIN
          #... pour transformer le "stream summary" en liste d'élépments avec leurs compteurs ...
          #... une quinzaine de lignes de Python ...
@@ -159,20 +164,25 @@ class StreamSummary:
         """increase counter for symbol `k`"""
         E = self.elements[k]
         C = E.C
-
         
-        if C.value + 1 != C.next.value:
-            print("oui")
+        if C.value + 1 == C.next.value:
+            C.next.E.add(Element(k, C.next))
+            E.C = C.next
+
+        else:
             C.add(Counter(C.value + 1))
+            C.next.E = Element(k, C.next)
+            E.C = C.next
 
         E.pop()
         
-        if E.next == None :
-            print("ok")
+        if E.next != None :
+            C.E = E.next
+        
+        if C.E.next == None:
             C.pop()
-            if C == self.lst_compteurs :
+                
+            if self.lst_compteurs == C:
                 self.lst_compteurs = C.next
-                if C.E == E:
-                    C.E = E.next
-                    
-        C.next.add(E)
+                
+        self.show()
