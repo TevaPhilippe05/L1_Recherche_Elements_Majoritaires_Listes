@@ -1,4 +1,4 @@
-# Space_Saving-Project -> Projet L1 CMI Visi201
+# L1_Recherche_Elements_Majoritaires_Listes -> Projet L1 CMI Visi201
 
 ## Le projet
 
