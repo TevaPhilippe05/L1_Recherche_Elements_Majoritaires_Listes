@@ -13,4 +13,4 @@ Voici enfin l'[article de recherche](http://os-vps418.infomaniak.ch:1250/mediawi
 
 ### Crédits
 - [PHILIPPE Teva](https://github.com/TevaPhilippe05)
-- [HYVERNAT Pierre](https://pierre-hyvernat.apps.math.cnrs.fr/) enseignant chercheur du LAMA.
+- [HYVERNAT Pierre](phyver) enseignant chercheur du LAMA.
